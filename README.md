@@ -64,23 +64,23 @@ export const UserUpdateArgsSchema = z
 
 It also generate a complete `allSchemas` object that contains all the generated schemas for all models:
 
-````typescript
+```typescript
 export const allSchemas = {
-  list: {
-    findMany: ListFindManyArgsSchema,
-    update: ListUpdateArgsSchema,
-    create: ListCreateArgsSchema
-  },
-  todo: {
-    findMany: TodoFindManyArgsSchema,
-    update: TodoUpdateArgsSchema,
-    create: TodoCreateArgsSchema
-  },
-  user: {
-    findMany: UserFindManyArgsSchema,
-    update: UserUpdateArgsSchema,
-    create: UserCreateArgsSchema
-  },
+    list: {
+        findMany: ListFindManyArgsSchema,
+        update: ListUpdateArgsSchema,
+        create: ListCreateArgsSchema,
+    },
+    todo: {
+        findMany: TodoFindManyArgsSchema,
+        update: TodoUpdateArgsSchema,
+        create: TodoCreateArgsSchema,
+    },
+    user: {
+        findMany: UserFindManyArgsSchema,
+        update: UserUpdateArgsSchema,
+        create: UserCreateArgsSchema,
+    },
 };
 ```
 
@@ -90,7 +90,7 @@ export const allSchemas = {
 
 ```bash
 npm install -D zenstack-crudzod
-````
+```
 
 2. Add the plugin to your ZModel schema file:
 
