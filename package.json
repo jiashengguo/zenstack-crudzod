@@ -1,0 +1,33 @@
+{
+    "name": "zenstack-crudzod",
+    "version": "0.1.0",
+    "description": "Generate CRUD Zod schemas from Zenstack models",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jiashengguo/zenstack-crudzod"
+    },
+    "publishConfig": {
+        "directory": "dist",
+        "linkDirectory": true
+    },
+    "scripts": {
+        "clean": "rimraf dist",
+        "build": "npm run clean && tsc && copyfiles ./package.json ./README.md dist",
+        "dev": "zenstack generate",
+        "watch": "tsc --watch"
+    },
+    "author": "JIASHENG GUO",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^22.14.1",
+        "copyfiles": "^2.4.1",
+        "rimraf": "^6.0.1",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.3",
+        "zenstack": "^2.14.0"
+    },
+    "dependencies": {
+        "@zenstackhq/sdk": "^2.14.0"
+    }
+}
