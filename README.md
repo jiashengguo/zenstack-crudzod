@@ -38,51 +38,59 @@ model List {
 }
 ```
 
-The plugin now generate 3 Zod schemas for each model. For example, for the `User` model, it generates:
+Here are the generated object in the schema file that you will use in your AI agent:
 
-```typescript
-export const UserFindManyArgsSchema = z
-    .object({
-        where: UserWhereInput.optional(),
-        include: UserInclude.optional(),
-    })
-    .describe('Prisma client API `findMany` function args for User model');
+-   3 Zod schemas for each model. For example, for the `User` model, it generates:
 
-export const UserCreateArgsSchema = z
-    .object({
-        data: UserCreateInput,
-    })
-    .describe('Prisma client API `create` function args for User model');
+    ```typescript
+    export const UserFindManyArgsSchema = z
+        .object({
+            where: UserWhereInput.optional(),
+            include: UserInclude.optional(),
+        })
+        .describe('Prisma client API `findMany` function args for User model');
 
-export const UserUpdateArgsSchema = z
-    .object({
-        data: UserUpdateInputSchema,
-        where: UserWhereInput,
-    })
-    .describe('Prisma client API `update` function args for User model');
-```
+    export const UserCreateArgsSchema = z
+        .object({
+            data: UserCreateInput,
+        })
+        .describe('Prisma client API `create` function args for User model');
 
-It also generate a complete `allSchemas` object that contains all the generated schemas for all models:
+    export const UserUpdateArgsSchema = z
+        .object({
+            data: UserUpdateInputSchema,
+            where: UserWhereInput,
+        })
+        .describe('Prisma client API `update` function args for User model');
+    ```
 
-```typescript
-export const allSchemas = {
-    list: {
-        findMany: ListFindManyArgsSchema,
-        update: ListUpdateArgsSchema,
-        create: ListCreateArgsSchema,
-    },
-    todo: {
-        findMany: TodoFindManyArgsSchema,
-        update: TodoUpdateArgsSchema,
-        create: TodoCreateArgsSchema,
-    },
-    user: {
-        findMany: UserFindManyArgsSchema,
-        update: UserUpdateArgsSchema,
-        create: UserCreateArgsSchema,
-    },
-};
-```
+-   A complete `allSchemas` object that contains all the generated schemas for all models:
+
+    ```typescript
+    export const allSchemas = {
+        list: {
+            findMany: ListFindManyArgsSchema,
+            update: ListUpdateArgsSchema,
+            create: ListCreateArgsSchema,
+        },
+        todo: {
+            findMany: TodoFindManyArgsSchema,
+            update: TodoUpdateArgsSchema,
+            create: TodoCreateArgsSchema,
+        },
+        user: {
+            findMany: UserFindManyArgsSchema,
+            update: UserUpdateArgsSchema,
+            create: UserCreateArgsSchema,
+        },
+    };
+    ```
+
+-   A `GetSystemPrompt` function that returns a system prompt for the AI agent to use:
+
+    ```typescript
+    export const GetSystemPrompt = (userId: string):string
+    ```
 
 ## Setup
 

@@ -8,10 +8,11 @@ export class CRUDZodGenerator {
     private definedRelationFilters: Set<string> = new Set<string>();
 
     private readonly systemPrompt = `
-You are a Database CRUD operator. Based on the user's request to call the individual tools to perform CRUD operations of Prisma client API:
+You are a application operation assistant. Based on the user's request to call the individual tools to perform CRUD operations of Prisma client API:
 
 **Instructions:**
-1. When invoking the query tools \`findMany\`, if user asks for "my" and "I", simply ignore it when generating query parameters.
+1. When invoking the query tools 'findMany', if user asks for "my" and "I", the current userId is \${userId}
+2. If the response contains the data of query, use markdown format to display the data clearly.
 `;
 
     // Generate schemas using ts-morph
@@ -178,8 +179,10 @@ const ${listRelationFilterName} = z
 
     // Generate the system prompt export
     private generateSystemPromptExport(sourceFile: SourceFile): void {
-        sourceFile.addStatements(`\n// System prompt for the AI
-export const systemPrompt = \`${this.systemPrompt.replace(/`/g, '\\`')}\`;`); // Escape backticks in the prompt string
+        sourceFile.addStatements(`\n// System prompt function for the AI
+export const getSystemPrompt = (userId: string): string => {
+  return \`${this.systemPrompt}\`;
+};`);
     }
 
     // Generate WhereInput schema dynamically

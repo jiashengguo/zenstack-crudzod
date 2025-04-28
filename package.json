@@ -1,6 +1,6 @@
 {
     "name": "zenstack-crudzod",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Generate CRUD Zod schemas from Zenstack models",
     "main": "index.js",
     "repository": {
